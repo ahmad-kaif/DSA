@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node {
+class Node {
+public:
     int key;
     string value;
     Node* left;
@@ -23,7 +24,7 @@ class OrderedMap {
 
         if (key < node->key) node->left = insert(node->left, key, value);
         else if (key > node->key) node->right = insert(node->right, key, value);
-        else node->value = value; // update if key exists
+        else node->value = value;    //update if key exists
 
         return node;
     }
