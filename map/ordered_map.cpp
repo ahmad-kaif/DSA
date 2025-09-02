@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class Node {
-public:
+struct Node {
     int key;
     string value;
     Node* left;
     Node* right;
 
+    // Simple constructor (no initializer list)
     Node(int k, string v) {
         key = k;
         value = v;
@@ -20,18 +20,24 @@ class OrderedMap {
     Node* root;
 
     Node* insert(Node* node, int key, string value) {
-        if (node == NULL) return new Node(key, value);
+        if (node == NULL) 
+            return new Node(key, value);
 
-        if (key < node->key) node->left = insert(node->left, key, value);
-        else if (key > node->key) node->right = insert(node->right, key, value);
-        else node->value = value;    //update if key exists
+        if (key < node->key) 
+            node->left = insert(node->left, key, value);
+        else if (key > node->key)
+            node->right = insert(node->right, key, value);
+        else
+            node->value = value; // update if key exists
 
         return node;
     }
 
     Node* search(Node* node, int key) {
-        if (node == NULL || node->key == key) return node;
-        if (key < node->key) return search(node->left, key);
+        if (node == NULL || node->key == key) 
+            return node;
+        if (key < node->key) 
+            return search(node->left, key);
         return search(node->right, key);
     }
 
